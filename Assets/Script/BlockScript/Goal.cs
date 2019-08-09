@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Union : Block
+public class Goal : Block
 {
 
     [System.NonSerialized]
-    public bool is_union;
+    public bool is_goal;
+
 
     public override BLOCK_TYPE GetBlock_Type
     {
         get
         {
-            return BLOCK_TYPE.UINON;
+            return BLOCK_TYPE.GOAL;
         }
     }
-
 }
