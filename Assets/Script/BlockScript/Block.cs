@@ -8,10 +8,11 @@ public class Block : MonoBehaviour
     {
         NONE,
         UINON,
-        GOAL
+        GOAL,
+        KEY,
+        KEYHOLE,
+        GOST
     }
-
-    public BLOCK_TYPE block_type = BLOCK_TYPE.NONE;
 
     //ブロックのポジション
     private Vector3Int position = Vector3Int.zero;
@@ -26,16 +27,15 @@ public class Block : MonoBehaviour
     }
 
     //ブロックのタイプを返す
-    public BLOCK_TYPE GetBlock_Type
+    public virtual BLOCK_TYPE GetBlock_Type
     {
         get
         {
-            return block_type;
+            return BLOCK_TYPE.NONE;
         }
     }
 
-
-    void Update()
+    private void Update()
     {
         //ブロックのポジションを整数化
         position = Utility.ToVector3Int(transform.position);
