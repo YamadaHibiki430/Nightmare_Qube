@@ -6,7 +6,7 @@ public class Union : Block
 {
 
     [System.NonSerialized]
-    public bool is_union;
+    public bool is_union =false;
 
     public override BLOCK_TYPE GetBlock_Type
     {
