@@ -6,7 +6,8 @@ using System;
 
 public class Test_Frickview : MonoBehaviour
 {
-    [SerializeField] private Frick _frick;
+    [SerializeField]
+    private Frick _frick;
 
     // Start is called before the first frame update
     void Start()

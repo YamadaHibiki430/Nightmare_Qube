@@ -6,6 +6,9 @@ using System; // .NET 4.xモードで動かす場合は必須
 
 public class Frick : MonoBehaviour
 {
+    [SerializeField]
+    float m_frickDistance = 200;
+
     private Vector3 _touchStartPos;
     private Vector3 _touchEndPos;
     private Subject<Vector3> _DirectionSubject = new Subject<Vector3>();
@@ -22,15 +25,14 @@ public class Frick : MonoBehaviour
         {
             _touchStartPos = Input.mousePosition;
         }
-
-        if (Input.GetKey(KeyCode.Mouse0))
-        {    
-        }
-
+    
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             _touchEndPos = Input.mousePosition;
-            _DirectionSubject.OnNext(GetDirection());
+            if (Vector3.Distance(_touchEndPos, _touchStartPos) > m_frickDistance)
+            {             
+                _DirectionSubject.OnNext(GetDirection());
+            }
         }
     }
 
