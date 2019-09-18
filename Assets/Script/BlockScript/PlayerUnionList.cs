@@ -177,23 +177,6 @@ public class PlayerUnionList : MonoBehaviour
         return result;
     }
 
-    // Playerの上方向の一番奥にある全てのブロックの取得
-    public List<Block> GetTopBlocks()
-    {
-        List<Block> result = new List<Block>();
-
-        var topPosition = GetTopPosition();
-        for (int i = 0; i < blocks.Count; i++)
-        {
-            var position = Utility.ToVector3Int(blocks[i].transform.position);
-            if (position.y == topPosition.y)
-            {
-                result.Add(blocks[i]);
-            }
-        }
-        return result;
-    }
-
     // プレイヤーの下方向の位置を取得
     public Vector3Int GetBottomPosition()
     {
@@ -214,23 +197,6 @@ public class PlayerUnionList : MonoBehaviour
     {
         List<Block> result = new List<Block>();
 
-        var bottomPosition = GetBottomPosition();
-        for (int i = 0; i < blocks.Count; i++)
-        {
-            var position = Utility.ToVector3Int(blocks[i].transform.position);
-            if (position.y == bottomPosition.y)
-            {
-                result.Add(blocks[i]);
-            }
-        }
-        return result;
-    }
-
-    // Playerの下方向の一番奥にある全てのブロックの取得part2
-    public List<Block> GetBottomBlocks2()
-    {
-        List<Block> result = new List<Block>();
-
         for (int i = 0; i < blocks.Count; i++)
         {
             var targetposition = Utility.ToVector3Int(blocks[i].transform.position);
@@ -246,7 +212,7 @@ public class PlayerUnionList : MonoBehaviour
     public Vector3Int GetForwardBottomPosition()
     {
         Vector3Int result = Vector3Int.zero;
-        var bottomblocks = GetBottomBlocks2();
+        var bottomblocks = GetBottomBlocks();
 
         if (bottomblocks.Count == 0)
         {
@@ -278,7 +244,7 @@ public class PlayerUnionList : MonoBehaviour
     public Vector3Int GetBackBottomPosition()
     {
         Vector3Int result = Vector3Int.zero;
-        var bottomblocks = GetBottomBlocks2();
+        var bottomblocks = GetBottomBlocks();
 
         if (bottomblocks.Count == 0)
         {
@@ -310,7 +276,7 @@ public class PlayerUnionList : MonoBehaviour
     public Vector3Int GetRightBottomPosition()
     {
         Vector3Int result = Vector3Int.zero;
-        var bottomblocks = GetBottomBlocks2();
+        var bottomblocks = GetBottomBlocks();
 
         if (bottomblocks.Count == 0)
         {
@@ -342,7 +308,7 @@ public class PlayerUnionList : MonoBehaviour
     public Vector3Int GetLeftBottomPosition()
     {
         Vector3Int result = Vector3Int.zero;
-        var bottomblocks = GetBottomBlocks2();
+        var bottomblocks = GetBottomBlocks();
 
         if (bottomblocks.Count == 0)
         {

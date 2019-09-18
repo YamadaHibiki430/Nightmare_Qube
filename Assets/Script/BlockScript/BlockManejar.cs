@@ -12,7 +12,7 @@ public class BlockManejar : MonoBehaviour
         blocks = transform.GetComponentsInChildren<Block>();
     }
 
-    //
+    //ブロックがあるかどうか
     public bool BlockCheck(Vector3Int position)
     {
         for (int i = 0; i < blocks.Length; i++)
@@ -26,23 +26,7 @@ public class BlockManejar : MonoBehaviour
         return false;
     }
 
-    //
-    public bool BlockTypeCheck(Vector3Int position, Block.BLOCK_TYPE type)
-    {
-        for (int i = 0; i < blocks.Length; i++)
-        {
-            if (blocks[i].Block_Position == position &&
-               blocks[i].GetBlock_Type == type)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-    //
+    //指定した座標のオブジェクト情報を取得
     public GameObject BlockObject(Vector3Int position, Block.BLOCK_TYPE type)
     {
 
@@ -58,25 +42,18 @@ public class BlockManejar : MonoBehaviour
         return null;
     }
 
-    //
-    public Block GetBlock(Vector3Int position)
+    //指定した座標とタイプのブロックを取得する
+    public Block GetBlock(Vector3Int position, Block.BLOCK_TYPE type = Block.BLOCK_TYPE.NONE)
     {
         for (int i = 0; i < blocks.Length; i++)
         {
-            if (blocks[i].Block_Position == position)
+            if(type == Block.BLOCK_TYPE.NONE)
             {
-                return blocks[i];
+                if (blocks[i].Block_Position == position)
+                {
+                    return blocks[i];
+                }
             }
-        }
-
-        return null;
-    }
-
-    //
-    public Block GetBlock(Vector3Int position, Block.BLOCK_TYPE type)
-    {
-        for (int i = 0; i < blocks.Length; i++)
-        {
             if (blocks[i].Block_Position == position &&
                blocks[i].GetBlock_Type == type)
             {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveCheck : MonoBehaviour
 {
 
-    //
+    //プレイヤーにくっついたブロックのリスト
     [SerializeField]
     private PlayerUnionList playerunion_list = null;
 
@@ -24,15 +24,8 @@ public class MoveCheck : MonoBehaviour
         var zMax = forwardPos.z + topPos.y;
 
         var count = playerunion_list.PivotForwardBlockCount_LMove();
-        int addcount = 0;
-        if (count == 0)
-        {
-            addcount = 1;
-        }
-        else
-        {
-            addcount = 0;
-        }
+        int addcount = count == 0 ? 1 : 0;
+
         if (fowardBlocks.Count > 0)
         {
             for (int i = 0; i < fowardBlocks.Count; i++)
@@ -45,10 +38,11 @@ public class MoveCheck : MonoBehaviour
                 var fowardPosDown = new Vector3(pos.x, -1.0f, zMax + addcount);
                 var vectorDown = Utility.ToVector3Int(fowardPosDown);
                 bool MoveCheckDown = blockmanejar.BlockCheck(vectorDown);
+
                 if (!MoveCheckDown)
                 {
                     result = false; // ブロックがあるので移動できない
-                    Debug.Log("下にブロックがないです");
+                    Debug.Log("下にブロックがないです");////
                 }
 
                 var block = (Union)blockmanejar.GetBlock(vector);
@@ -67,7 +61,6 @@ public class MoveCheck : MonoBehaviour
                     result = false; // ブロックがあるので移動できない
                     Debug.Log("ブロックがあります");
                 }
-
             }
 
             if (fowardBlocks[0].Block_Position.z == transform.position.z)
@@ -79,7 +72,7 @@ public class MoveCheck : MonoBehaviour
                 if (!MoveCheckDown2)
                 {
                     result = false; // ブロックがあるので移動できない
-                    Debug.Log("下にブロックがないです");
+                    Debug.Log("下にブロックがないです");/////
                 }
             }
         }
@@ -118,15 +111,8 @@ public class MoveCheck : MonoBehaviour
         var zMin = -(backpos.z - topPos.y);
 
         var count = playerunion_list.PivotBackBlockCount_LMove();
-        int addcount = 0;
-        if (count == 0)
-        {
-            addcount = 1;
-        }
-        else
-        {
-            addcount = 0;
-        }
+        int addcount = count == 0 ? 1 : 0;
+
         if (backBlocks.Count > 0)
         {
 
@@ -213,15 +199,8 @@ public class MoveCheck : MonoBehaviour
         var xMax = rightpos.x + topPos.y;
 
         var count = playerunion_list.PivotRightblockCount_LMove();
-        int addcount = 0;
-        if (count == 0)
-        {
-            addcount = 1;
-        }
-        else
-        {
-            addcount = 0;
-        }
+        int addcount = count == 0 ? 1 : 0;
+
         if (rightBlocks.Count > 0)
         {
 
@@ -312,15 +291,8 @@ public class MoveCheck : MonoBehaviour
         var xMin = -(leftpos.x - topPos.y);
 
         var count = playerunion_list.PivotLeftblockCount_LMove();
-        int addcount = 0;
-        if (count == 0)
-        {
-            addcount = 1;
-        }
-        else
-        {
-            addcount = 0;
-        }
+        int addcount = count == 0 ? 1 : 0;
+
         if (leftBlocks.Count > 0)
         {
 

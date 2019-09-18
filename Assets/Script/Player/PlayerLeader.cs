@@ -4,26 +4,22 @@ using UnityEngine;
 using UniRx;
 
 
-
 public class PlayerLeader : MonoBehaviour
 {
-    // すべてのブロックの監視
-    private BlockManejar blockmanejar = null;
-
-
+    //フリック処理の読み込み
     [SerializeField] private Frick _frick;
 
-    //
+    //プレイヤーの移動
     [SerializeField]
     private PlayerMove player_move = null;
 
 
     private void Start()
     {
-        blockmanejar = GameObject.Find("BlockManejar").GetComponent<BlockManejar>();
+        //フリックした方向に移動
         _frick.OnFricked.Subscribe(_direction =>
         {
-            if (!player_move.Is_Move()) { player_move.Move(_direction); }
+            if (!player_move.GetIs_Move()) { player_move.Move(_direction); }
         });
     }
 

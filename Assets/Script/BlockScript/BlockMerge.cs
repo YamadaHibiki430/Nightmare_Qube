@@ -8,16 +8,17 @@ public class BlockMerge : MonoBehaviour
 {
 
     // すべてのブロックの監視
+    [SerializeField]
     private BlockManejar blockmanejar = null;
 
-    //
+    //プレイヤーにくっついたブロックのリスト
     [SerializeField]
     private PlayerUnionList playerunion_list = null;
 
-    
+ 
 
     // ブロックをくっつける
-    private void UnionBlockCheck()
+    public void UnionBlockCheck()
     {
         UnionCheckAndSet(Utility.ToVector3Int(Vector3.forward) + Utility.ToVector3Int(transform.position));
         UnionCheckAndSet(Utility.ToVector3Int(Vector3.back) + Utility.ToVector3Int(transform.position));
@@ -28,9 +29,9 @@ public class BlockMerge : MonoBehaviour
     }
 
     // 再帰的にブロックをくっつける
-    void UnionCheckAndSet(Vector3Int vector)
+    private void UnionCheckAndSet(Vector3Int vector)
     {
-        Union block = (Union)blockmanejar.GetBlock(vector, Block.BLOCK_TYPE.UINON);
+        var block = (Union)blockmanejar.GetBlock(vector, Block.BLOCK_TYPE.UINON);
         if (block == null) return; // Union 以外のブロックなら返す
         //Debug.Log("UnionCheckAndSet: " + vector + ", " + block.name);
 

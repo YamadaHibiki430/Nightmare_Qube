@@ -7,7 +7,7 @@ using UniRx;
 
 public class PlayerMove : MonoBehaviour
 {
-    //
+    //プレイヤーにくっついたブロックのリスト
     [SerializeField]
     private PlayerUnionList playerunion_list = null;
 
@@ -15,15 +15,20 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float move_speed = 0.5f;
 
+    //移動できるか判定クラス
+    [SerializeField]
+    private MoveCheck movecheck = null;
+
+    //ブロックをくっつけるクラス
+    [SerializeField]
+    private BlockMerge blockmerge = null;
+
     //回転のピボットの情報
     private Transform pivot = null;
 
-    //
+    //今動いているかどうか
     private bool is_move = false;
 
-    //
-    [SerializeField]
-    private MoveCheck movecheck = null;
 
     private void Awake()
     {
@@ -35,6 +40,8 @@ public class PlayerMove : MonoBehaviour
     //移動処理
     public void Move(Vector3 direction)
     {
+        blockmerge.UnionBlockCheck();
+
         if (movecheck.Move_Check(direction))
         {
             var pivot_position = Vector3.zero;
@@ -50,6 +57,7 @@ public class PlayerMove : MonoBehaviour
                 pivot_position = bottomPosition;
                 pivot_position.z += 0.5f;
                 pivot_position.y -= 0.5f;
+
                 pivot.transform.position = pivot_position;
                 pivotmove_position = pivot_position;
                 pivotmove_position.z += playerunion_list.PivotForwardBlockCount();
@@ -61,6 +69,7 @@ public class PlayerMove : MonoBehaviour
                 pivot_position = bottomPosition;
                 pivot_position.z -= 0.5f;
                 pivot_position.y -= 0.5f;
+
                 pivot.transform.position = pivot_position;
                 pivotmove_position = pivot_position;
                 pivotmove_position.z -= playerunion_list.PivotBackBlockCount();
@@ -72,6 +81,7 @@ public class PlayerMove : MonoBehaviour
                 pivot_position = bottomPosition;
                 pivot_position.x += 0.5f;
                 pivot_position.y -= 0.5f;
+
                 pivot.transform.position = pivot_position;
                 pivotmove_position = pivot_position;
                 pivotmove_position.x += playerunion_list.PivotRightBlockCount();
@@ -83,6 +93,7 @@ public class PlayerMove : MonoBehaviour
                 pivot_position = bottomPosition;
                 pivot_position.x -= 0.5f;
                 pivot_position.y -= 0.5f;
+
                 pivot.transform.position = pivot_position;
                 pivotmove_position = pivot_position;
                 pivotmove_position.x -= playerunion_list.PivotLeftBlockCount();
@@ -226,8 +237,8 @@ public class PlayerMove : MonoBehaviour
         Gizmos.color = color;
     }
 
-    //
-    public bool Is_Move()
+    //動いてるかどうかの受け渡し
+    public bool GetIs_Move()
     {
         return is_move;
     }
