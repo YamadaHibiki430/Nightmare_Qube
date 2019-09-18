@@ -1174,6 +1174,7 @@ GameObject:
   - component: {fileID: 1290466125}
   - component: {fileID: 1290466128}
   - component: {fileID: 1290466129}
+  - component: {fileID: 1290466130}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1294,6 +1295,7 @@ MonoBehaviour:
   playerunion_list: {fileID: 1290466125}
   move_speed: 0.5
   movecheck: {fileID: 1290466128}
+  blockmerge: {fileID: 1290466129}
 --- !u!114 &1290466127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,9 +1305,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290466119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7e5cd8746d02c4199c678acdd0b1db, type: 3}
+  m_Script: {fileID: 11500000, guid: f36e81c246271c74eb38041ab161487d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_frickDistance: 100
 --- !u!114 &1290466128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1332,6 +1335,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbb5eb2b8cbdab4b8d5b320d614a6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockmanejar: {fileID: 1032029303}
+  playerunion_list: {fileID: 1290466125}
+--- !u!114 &1290466130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290466119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbb5eb2b8cbdab4b8d5b320d614a6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockmanejar: {fileID: 0}
   playerunion_list: {fileID: 1290466125}
 --- !u!1 &1360655851
 GameObject:

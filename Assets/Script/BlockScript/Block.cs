@@ -11,7 +11,8 @@ public class Block : MonoBehaviour
         GOAL,
         KEY,
         KEYHOLE,
-        GOST
+        GOST,
+        NOM
     }
 
     //ブロックのポジション
