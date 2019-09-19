@@ -45,7 +45,7 @@ public class MoveCheck : MonoBehaviour
                     Debug.Log("下にブロックがないです");////
                 }
 
-                var block = (Union)blockmanejar.GetBlock(vector);
+                var block = (Union)blockmanejar.GetBlock<Block>(vector);
                 if (block != null && block.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -55,7 +55,7 @@ public class MoveCheck : MonoBehaviour
                 Vector3 pos2 = transform.position;
                 var fowardPos2 = new Vector3(pos2.x, 0.0f, pos2.z + pos2.y + addcount);
                 var vector2 = Utility.ToVector3Int(fowardPos2);
-                var block2 = (Union)blockmanejar.GetBlock(vector2);
+                var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
                 if (block2 != null && block2.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -82,7 +82,7 @@ public class MoveCheck : MonoBehaviour
             var fowardPos2 = new Vector3(pos2.x, 0.0f, pos2.z + pos2.y + addcount);
             var vector2 = Utility.ToVector3Int(fowardPos2);
 
-            var block2 = (Union)blockmanejar.GetBlock(vector2);
+            var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
             if (block2 != null && block2.is_union == false)
             {
                 result = false; // ブロックがあるので移動できない
@@ -132,7 +132,7 @@ public class MoveCheck : MonoBehaviour
                     Debug.Log("下にブロックがないです");
                 }
 
-                var block = (Union)blockmanejar.GetBlock(vector);
+                var block = (Union)blockmanejar.GetBlock<Block>(vector);
                 if (block != null && block.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -142,7 +142,7 @@ public class MoveCheck : MonoBehaviour
                 Vector3 pos2 = transform.position;
                 var backPos2 = new Vector3(pos2.x, 0.0f, pos2.z - pos2.y - addcount);
                 var vector2 = Utility.ToVector3Int(backPos2);
-                var block2 = (Union)blockmanejar.GetBlock(vector2);
+                var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
                 if (block2 != null && block2.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -179,7 +179,7 @@ public class MoveCheck : MonoBehaviour
                 Debug.Log("下にブロックがないです");
             }
 
-            var block2 = (Union)blockmanejar.GetBlock(vector2);
+            var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
             if (block2 != null && block2.is_union == false)
             {
                 result = false; // ブロックがあるので移動できない
@@ -210,7 +210,7 @@ public class MoveCheck : MonoBehaviour
                 Vector3 position = rightBlocks[i].transform.position;
                 var rightPos = new Vector3(position.x + position.y + addcount, 0.0f, position.z);
                 var vector = Utility.ToVector3Int(rightPos);
-                var block = (Union)blockmanejar.GetBlock(vector);
+                var block = (Union)blockmanejar.GetBlock<Block>(vector);
 
                 //移動方向の判定
                 if (block != null && block.is_union == false)
@@ -233,7 +233,7 @@ public class MoveCheck : MonoBehaviour
                 Vector3 pos2 = transform.position;
                 var rightPos2 = new Vector3(pos2.x + pos2.y + addcount, 0.0f, pos2.z);
                 var vector2 = Utility.ToVector3Int(rightPos2);
-                var block2 = (Union)blockmanejar.GetBlock(vector2);
+                var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
                 if (block2 != null && block2.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -271,7 +271,7 @@ public class MoveCheck : MonoBehaviour
                 Debug.Log("下にブロックがないです");
             }
 
-            var block2 = (Union)blockmanejar.GetBlock(vector2);
+            var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
             if (block2 != null && block2.is_union == false)
             {
                 result = false; // ブロックがあるので移動できない
@@ -312,7 +312,7 @@ public class MoveCheck : MonoBehaviour
                     Debug.Log("下にブロックがないです");
                 }
 
-                var block = (Union)blockmanejar.GetBlock(vector);
+                var block = (Union)blockmanejar.GetBlock<Block>(vector);
                 if (block != null && block.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -323,7 +323,7 @@ public class MoveCheck : MonoBehaviour
                 var leftPos2 = new Vector3(pos2.x - pos2.y - addcount, 0.0f, pos2.z);
                 var vector2 = Utility.ToVector3Int(leftPos2);
 
-                var block2 = (Union)blockmanejar.GetBlock(vector2);
+                var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
                 if (block2 != null && block2.is_union == false)
                 {
                     result = false; // ブロックがあるので移動できない
@@ -359,7 +359,7 @@ public class MoveCheck : MonoBehaviour
                 Debug.Log("下にブロックがないです");
             }
 
-            var block2 = (Union)blockmanejar.GetBlock(vector2);
+            var block2 = (Union)blockmanejar.GetBlock<Block>(vector2);
             if (block2 != null && block2.is_union == false)
             {
                 result = false; // ブロックがあるので移動できない

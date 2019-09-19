@@ -31,7 +31,7 @@ public class BlockMerge : MonoBehaviour
     // 再帰的にブロックをくっつける
     private void UnionCheckAndSet(Vector3Int vector)
     {
-        var block = (Union)blockmanejar.GetBlock(vector, Block.BLOCK_TYPE.UINON);
+        var block = (Union)blockmanejar.GetBlock<Block>(vector, Block.BLOCK_TYPE.UINON);
         if (block == null) return; // Union 以外のブロックなら返す
         //Debug.Log("UnionCheckAndSet: " + vector + ", " + block.name);
 
@@ -40,26 +40,6 @@ public class BlockMerge : MonoBehaviour
         {
             block.transform.parent = transform;
             block.is_union = true;
-
-            //透明化ブロックの場合消す
-            if (blockmanejar.GetBlock(vector, Block.BLOCK_TYPE.GOST))
-            {
-                Material Cube = blockmanejar.BlockObject(vector, Block.BLOCK_TYPE.UINON).GetComponent<Renderer>().material;
-                Sequence alphaseq = DOTween.Sequence();
-                alphaseq.Append(DOTween.ToAlpha(() => Cube.color, color => Cube.color = color, 0.0f, 1.0f));
-                Debug.Log("よばれた");
-
-                //終了後の処理
-                alphaseq.OnComplete(() =>
-                {
-                    Sequence seq = DOTween.Sequence();
-                    //seq.Complete();
-                    seq.Append(DOTween.ToAlpha(() => Cube.color, color => Cube.color = color, 0.0f, 3.0f));
-                    seq.Append(DOTween.ToAlpha(() => Cube.color, color => Cube.color = color, 0.3f, 0.75f));
-                    seq.Append(DOTween.ToAlpha(() => Cube.color, color => Cube.color = color, 0.0f, 0.75f));
-                    seq.SetLoops(-1);
-                });
-            }
 
             //Playerblocklistに追加
             playerunion_list.AddBlock(block);

@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36e81c246271c74eb38041ab161487d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_frickDistance: 100
+  m_frickDistance: 200
 --- !u!114 &1290466128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbb5eb2b8cbdab4b8d5b320d614a6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockmanejar: {fileID: 0}
+  blockmanejar: {fileID: 1032029303}
   playerunion_list: {fileID: 1290466125}
 --- !u!1 &1360655851
 GameObject:

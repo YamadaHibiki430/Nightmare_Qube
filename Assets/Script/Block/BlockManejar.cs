@@ -15,13 +15,11 @@ public class BlockManejar : MonoBehaviour
     //ブロックがあるかどうか
     public bool BlockCheck(Vector3Int position)
     {
-        for (int i = 0; i < blocks.Length; i++)
+        foreach (Block block in blocks)
         {
-            if (blocks[i].Block_Position == position)
-            {
-                return true;
-            }
+            if (block.Block_Position == position)  { return true; }
         }
+
 
         return false;
     }
@@ -29,35 +27,32 @@ public class BlockManejar : MonoBehaviour
     //指定した座標のオブジェクト情報を取得
     public GameObject BlockObject(Vector3Int position, Block.BLOCK_TYPE type)
     {
-
-        for (int i = 0; i < blocks.Length; i++)
+        foreach (Block block in blocks)
         {
-            if (blocks[i].Block_Position == position &&
-               blocks[i].GetBlock_Type == type)
-            {
-                return blocks[i].transform.gameObject;
+            if (block.Block_Position == position && 
+                block.GetBlock_Type ==type) {
+                return block.transform.gameObject;
             }
         }
-
         return null;
     }
 
     //指定した座標とタイプのブロックを取得する
-    public Block GetBlock(Vector3Int position, Block.BLOCK_TYPE type = Block.BLOCK_TYPE.NONE)
+    public Type GetBlock<Type>(Vector3Int position, Block.BLOCK_TYPE type = Block.BLOCK_TYPE.NONE)
+        where Type : Block
     {
-        for (int i = 0; i < blocks.Length; i++)
+        foreach(Block block in blocks)
         {
-            if(type == Block.BLOCK_TYPE.NONE)
-            {
-                if (blocks[i].Block_Position == position)
+            if(type == Block.BLOCK_TYPE.NONE) {
+                if(block.Block_Position == position)
                 {
-                    return blocks[i];
+                    return (Type)block;
                 }
             }
-            if (blocks[i].Block_Position == position &&
-               blocks[i].GetBlock_Type == type)
+            if (block.Block_Position == position &&
+                block.GetBlock_Type == type)
             {
-                return blocks[i];
+                return (Type)block;
             }
         }
 

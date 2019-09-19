@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
         GOAL,
         KEY,
         KEYHOLE,
-        GOST,
+        GHOST,
         NOM
     }
 
